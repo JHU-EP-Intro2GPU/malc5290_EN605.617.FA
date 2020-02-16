@@ -1,0 +1,6 @@
+./assignment.exe 512 256 "thread512_block256"
+./assignment.exe 512 128 "thread512_block128"
+./assignment.exe 512 64 "thread512_block64"
+./assignment.exe 512 32 "thread512_block32"
+./assignment.exe 512 16 "thread512_block16"
+./assignment.exe 512 8 "thread512_block8"
