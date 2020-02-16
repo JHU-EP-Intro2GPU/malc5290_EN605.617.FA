@@ -1,0 +1,90 @@
+Results with Thread Count: 2048 and Block Size: 1024
+Add Time nanoseconds:	 8214
+Sub Time nanoseconds:	 2403
+Mult Time nanoseconds:	 1776
+Mod Time nanoseconds:	 1702
+
+Results with Thread Count: 2048 and Block Size: 512
+Add Time nanoseconds:	 7944
+Sub Time nanoseconds:	 2465
+Mult Time nanoseconds:	 1586
+Mod Time nanoseconds:	 1679
+
+Results with Thread Count: 2048 and Block Size: 256
+Add Time nanoseconds:	 8207
+Sub Time nanoseconds:	 2206
+Mult Time nanoseconds:	 1601
+Mod Time nanoseconds:	 1888
+
+Results with Thread Count: 2048 and Block Size: 128
+Add Time nanoseconds:	 8725
+Sub Time nanoseconds:	 2500
+Mult Time nanoseconds:	 1630
+Mod Time nanoseconds:	 1702
+
+Results with Thread Count: 2048 and Block Size: 64
+Add Time nanoseconds:	 7610
+Sub Time nanoseconds:	 2338
+Mult Time nanoseconds:	 1610
+Mod Time nanoseconds:	 1675
+
+Results with Thread Count: 1024 and Block Size: 512
+Add Time nanoseconds:	 8015
+Sub Time nanoseconds:	 2342
+Mult Time nanoseconds:	 1818
+Mod Time nanoseconds:	 1700
+
+Results with Thread Count: 1024 and Block Size: 256
+Add Time nanoseconds:	 9189
+Sub Time nanoseconds:	 2310
+Mult Time nanoseconds:	 1718
+Mod Time nanoseconds:	 1703
+
+Results with Thread Count: 1024 and Block Size: 128
+Add Time nanoseconds:	 8533
+Sub Time nanoseconds:	 2410
+Mult Time nanoseconds:	 1692
+Mod Time nanoseconds:	 1706
+
+Results with Thread Count: 1024 and Block Size: 64
+Add Time nanoseconds:	 8020
+Sub Time nanoseconds:	 2323
+Mult Time nanoseconds:	 1538
+Mod Time nanoseconds:	 1691
+
+Results with Thread Count: 1024 and Block Size: 32
+Add Time nanoseconds:	 7891
+Sub Time nanoseconds:	 2322
+Mult Time nanoseconds:	 1597
+Mod Time nanoseconds:	 1869
+
+Results with Thread Count: 512 and Block Size: 256
+Add Time nanoseconds:	 7694
+Sub Time nanoseconds:	 2366
+Mult Time nanoseconds:	 1776
+Mod Time nanoseconds:	 1772
+
+Results with Thread Count: 512 and Block Size: 128
+Add Time nanoseconds:	 8990
+Sub Time nanoseconds:	 2541
+Mult Time nanoseconds:	 1706
+Mod Time nanoseconds:	 1778
+
+Results with Thread Count: 512 and Block Size: 64
+Add Time nanoseconds:	 7869
+Sub Time nanoseconds:	 2251
+Mult Time nanoseconds:	 1778
+Mod Time nanoseconds:	 1718
+
+Results with Thread Count: 512 and Block Size: 32
+Add Time nanoseconds:	 8052
+Sub Time nanoseconds:	 2559
+Mult Time nanoseconds:	 1772
+Mod Time nanoseconds:	 1671
+
+Results with Thread Count: 512 and Block Size: 16
+Add Time nanoseconds:	 8111
+Sub Time nanoseconds:	 2275
+Mult Time nanoseconds:	 1735
+Mod Time nanoseconds:	 1700
+
