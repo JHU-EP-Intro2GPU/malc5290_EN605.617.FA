@@ -54,7 +54,7 @@ void mod_arrays(
 int main(int argc, char** argv)
 {
     // read command line arguments
-    int totalThreads = (1 << 20);
+    int totalThreads = 512;
     int blockSize = 256;
     bool outputResults = false;
     std::string outputName;
