@@ -162,10 +162,10 @@ int main(int argc, char** argv)
     cudaFree(d_mod_results);
     
     printf("Results with Thread Count: %d and Block Size: %d\n", totalThreads, blockSize);
-    printf("Add Time nanoseconds:\t %d\n", add_time);
-    printf("Sub Time nanoseconds:\t %d\n", sub_time);
-    printf("Mult Time nanoseconds:\t %d\n", mult_time);
-    printf("Mod Time nanoseconds:\t %d\n", mod_time);
+    printf("Add Time nanoseconds:\t %ld\n", add_time);
+    printf("Sub Time nanoseconds:\t %ld\n", sub_time);
+    printf("Mult Time nanoseconds:\t %ld\n", mult_time);
+    printf("Mod Time nanoseconds:\t %ld\n", mod_time);
 
     if (outputResults)
     {
@@ -208,30 +208,5 @@ int main(int argc, char** argv)
         }
         stream.close();
     }
-    /*   
-    printf("Add results\n");
-    for( int i = 0; i < totalThreads; i++ )
-    {
-        printf("A(%d) + B(%d) = %d, ", array_a[i], array_b[i], add_results[i]);
-    }
-    
-    printf("SUB results\n");
-    for( int i = 0; i < totalThreads; i++ )
-    {
-        printf("A(%d) - B(%d) = %d, ", array_a[i], array_b[i], sub_results[i]);
-    }
-    
-    printf("MULT results\n");
-    for( int i = 0; i < totalThreads; i++ )
-    {
-        printf("A(%d) * B(%d) = %d, ", array_a[i], array_b[i], mult_results[i]);
-    }
-    
-    printf("MOD results\n");
-    for( int i = 0; i < totalThreads; i++ )
-    {
-        printf("A(%d) mod B(%d) = %d, ", array_a[i], array_b[i], mod_results[i]);
-    }
-    */
     printf("\n");
 }
