@@ -19,6 +19,7 @@ typedef struct {
     int cipher;
 } ResultsStruct;
 
+// Test String used for the cipher
 const std::string LOREM_IPSUM = 
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     "Ut sed feugiat felis. Vestibulum accumsan ornare convallis.\n"
@@ -61,7 +62,7 @@ void mult_arrays(
 }
 
 
-// Uses the GPU to mudulot the block + thread index in array_a by array_b to array_results
+// Uses the GPU to mudulo the block + thread index in array_a by array_b to array_results
 __global__
 void mod_arrays( 
     const MathStruct* const data,
@@ -71,6 +72,7 @@ void mod_arrays(
     results[index].mod = data[index].a % data[index].b;
 }
 
+// Uses the GPU to perform the shift cipher (decrypt) operation subtracting the shift value from the character
 __global__
 void decrypt_cipher( 
     char* const data,
@@ -80,6 +82,7 @@ void decrypt_cipher(
     data[index] = data[index] - *shift;
 }
 
+// Uses the GPU to perform the shift cipher (encrypt) operation adding the shift value from the character
 __global__
 void encrypt_cipher( 
     char* const data,
@@ -89,8 +92,9 @@ void encrypt_cipher(
     data[index] = data[index] + *shift;
 }
 
+// Helper function for writing the add math results to file. 
 __host__
-void print_results(
+void write_results(
     const std::string& outputName, const int& totalThreads, const int& blockSize, const int& add_time,
     const int& sub_time, const int& mult_time, const int& mod_time, const MathStruct* const  data,
     const ResultsStruct* const results)
@@ -135,6 +139,7 @@ void print_results(
     stream.close();
 }
 
+// Helper function for executing the cipher functionality via pinned or pageable memory
 __host__
 void run_cipher_kernal(
     const int& blockSize, const int& totalThreads, const int& numBlocks,
@@ -179,7 +184,7 @@ void run_cipher_kernal(
 
     if ( match )
     {
-        std::cout << "THEY MATCH!\n";
+        printf("THEY MATCH!\n");
     }
 
     printf("\nEncrypt took %d nanoseconds\n", int(decrypt_time));
@@ -187,6 +192,9 @@ void run_cipher_kernal(
     printf("Copy device -> host took %d nanoseconds\n", int(copy_time));
 }
 
+// Helper function for executing the math functionality via pinned or pageable memory
+// calls the add_array, sub_array, mult_array, and mod_array and copies the results to an interleaved
+// struct
 __host__
 void run_math_kernal(
     const int& blockSize, const int& totalThreads, const int& numBlocks, const std::string& outputName,
@@ -230,11 +238,13 @@ void run_math_kernal(
     
     if ( !outputName.empty() )
     {
-        print_results(outputName, totalThreads, blockSize, add_time, sub_time, mult_time, mod_time,
+        write_results(outputName, totalThreads, blockSize, add_time, sub_time, mult_time, mod_time,
             data, results);
     }
 }
 
+// Helper function for initilizing the data used by the cipher will output results of pageable and
+// pinned memory allocation.
 __host__
 void init_cipher_data(const int& totalThreads, const bool& pageable, char*& data, char*& d_data,
     const int* shift, int*& d_shift)
@@ -271,6 +281,8 @@ void init_cipher_data(const int& totalThreads, const bool& pageable, char*& data
     printf("%s copy took %d nanoseconds\n", pageable ? "Pageable" : "Pinned", int(std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start).count()));
 }
 
+// Helper function for initilizing the data used by the math functions will output results of pageable and
+// pinned memory allocation.
 __host__
 void init_math_data(const int& totalThreads, const bool& pageable, MathStruct*& host_data, ResultsStruct*& host_results,
     MathStruct*& d_data, ResultsStruct*& d_results)
@@ -313,6 +325,7 @@ void init_math_data(const int& totalThreads, const bool& pageable, MathStruct*& 
     printf("%s copy took %d nanoseconds\n", pageable ? "Pageable" : "Pinned", int(std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start).count()));
 }
 
+// Helper function for cleaning up allocated memory used by math functionality.
 __host__ 
 void cleanup_math( 
     const bool& pageable, MathStruct*& data, MathStruct*& d_data,
@@ -333,7 +346,7 @@ void cleanup_math(
     }
 }
 
-
+// Helper function for cleaning up allocated memory used by cipher functionality.
 __host__ 
 void cleanup_cipher( 
     const bool& pageable, char*& data, char*& d_data,
@@ -352,6 +365,7 @@ void cleanup_cipher(
     }
 }
 
+// Used to run the cipher functionality with pageable memory
 __host__
 void execute_cipher_pageable_mem(
     const int& blockSize, const int& numBlocks, const int& shift)
@@ -365,6 +379,7 @@ void execute_cipher_pageable_mem(
     cleanup_cipher(true, data, d_data, d_shift);
 }
 
+// Used to run the cipher functionality with pinnable memory
 __host__
 void execute_cipher_pinnable_mem(
     const int& blockSize, const int& numBlocks, const int& shift)
@@ -378,6 +393,7 @@ void execute_cipher_pinnable_mem(
     cleanup_cipher(false, data, d_data, d_shift);
 }
 
+// Used to run the math functionality with pageable memory
 __host__
 void execute_math_pageable_mem(
     const int& blockSize, const int& totalThreads, const int& numBlocks,
@@ -393,6 +409,7 @@ void execute_math_pageable_mem(
     cleanup_math(true, data, d_data, results, d_results);
 }
 
+// Used to run the math functionality with pinnable memory
 __host__
 void execute_math_pinnable_mem(
     const int& blockSize, const int& totalThreads, const int& numBlocks,
@@ -442,6 +459,7 @@ int main(int argc, char** argv)
         printf("The total number of threads will be rounded up to %d\n", totalThreads);
     }
     
+    printf("\n####################### MATH FUNCTIONALITY START #########################\n");
     printf("####################### PAGEABLE MEMORY #########################\n");
     execute_math_pageable_mem( blockSize, totalThreads, numBlocks, outputResults, outputName);
     printf("####################### PINNABLE MEMORY #########################\n");

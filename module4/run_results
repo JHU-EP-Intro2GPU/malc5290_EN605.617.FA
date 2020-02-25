@@ -1,0 +1,871 @@
+nvcc --std=c++11 assignment.cu -o assignment.exe
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 343 nanoseconds
+Pageable copy took 9863 nanoseconds
+Copy device -> host took 15515 nanoseconds
+Results with Thread Count: 2048 and Block Size: 1024
+Add Time nanoseconds:	 7923
+Sub Time nanoseconds:	 2237
+Mult Time nanoseconds:	 1583
+Mod Time nanoseconds:	 1580
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 415060 nanoseconds
+Pinned copy took 10724 nanoseconds
+Copy device -> host took 9596 nanoseconds
+Results with Thread Count: 2048 and Block Size: 1024
+Add Time nanoseconds:	 3894
+Sub Time nanoseconds:	 1851
+Mult Time nanoseconds:	 1440
+Mod Time nanoseconds:	 1456
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 65 nanoseconds
+Pageable copy took 8382 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1835 nanoseconds
+Decrypt took 1835 nanoseconds
+Copy device -> host took 5568 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3883 nanoseconds
+Pinned copy took 10047 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2029 nanoseconds
+Decrypt took 2029 nanoseconds
+Copy device -> host took 4854 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 362 nanoseconds
+Pageable copy took 9871 nanoseconds
+Copy device -> host took 15820 nanoseconds
+Results with Thread Count: 2048 and Block Size: 512
+Add Time nanoseconds:	 8094
+Sub Time nanoseconds:	 2230
+Mult Time nanoseconds:	 1531
+Mod Time nanoseconds:	 1565
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 416518 nanoseconds
+Pinned copy took 11114 nanoseconds
+Copy device -> host took 9476 nanoseconds
+Results with Thread Count: 2048 and Block Size: 512
+Add Time nanoseconds:	 3715
+Sub Time nanoseconds:	 1862
+Mult Time nanoseconds:	 1455
+Mod Time nanoseconds:	 1392
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 64 nanoseconds
+Pageable copy took 8298 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1851 nanoseconds
+Decrypt took 1851 nanoseconds
+Copy device -> host took 5520 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 4148 nanoseconds
+Pinned copy took 9626 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2058 nanoseconds
+Decrypt took 2058 nanoseconds
+Copy device -> host took 4470 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 324 nanoseconds
+Pageable copy took 10142 nanoseconds
+Copy device -> host took 15423 nanoseconds
+Results with Thread Count: 2048 and Block Size: 256
+Add Time nanoseconds:	 8182
+Sub Time nanoseconds:	 2381
+Mult Time nanoseconds:	 1517
+Mod Time nanoseconds:	 1593
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 415299 nanoseconds
+Pinned copy took 10704 nanoseconds
+Copy device -> host took 9456 nanoseconds
+Results with Thread Count: 2048 and Block Size: 256
+Add Time nanoseconds:	 3771
+Sub Time nanoseconds:	 1831
+Mult Time nanoseconds:	 1488
+Mod Time nanoseconds:	 1391
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 56 nanoseconds
+Pageable copy took 8525 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1929 nanoseconds
+Decrypt took 1929 nanoseconds
+Copy device -> host took 5729 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3838 nanoseconds
+Pinned copy took 9531 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2099 nanoseconds
+Decrypt took 2099 nanoseconds
+Copy device -> host took 4562 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 296 nanoseconds
+Pageable copy took 10209 nanoseconds
+Copy device -> host took 15269 nanoseconds
+Results with Thread Count: 2048 and Block Size: 128
+Add Time nanoseconds:	 7760
+Sub Time nanoseconds:	 2407
+Mult Time nanoseconds:	 1491
+Mod Time nanoseconds:	 1597
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 414193 nanoseconds
+Pinned copy took 10653 nanoseconds
+Copy device -> host took 9738 nanoseconds
+Results with Thread Count: 2048 and Block Size: 128
+Add Time nanoseconds:	 3845
+Sub Time nanoseconds:	 1941
+Mult Time nanoseconds:	 1506
+Mod Time nanoseconds:	 1370
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 65 nanoseconds
+Pageable copy took 8949 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2012 nanoseconds
+Decrypt took 2012 nanoseconds
+Copy device -> host took 5172 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3953 nanoseconds
+Pinned copy took 9818 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2036 nanoseconds
+Decrypt took 2036 nanoseconds
+Copy device -> host took 4569 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 404 nanoseconds
+Pageable copy took 7844 nanoseconds
+Copy device -> host took 15451 nanoseconds
+Results with Thread Count: 2048 and Block Size: 64
+Add Time nanoseconds:	 8205
+Sub Time nanoseconds:	 2391
+Mult Time nanoseconds:	 1546
+Mod Time nanoseconds:	 1600
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 415790 nanoseconds
+Pinned copy took 11018 nanoseconds
+Copy device -> host took 9496 nanoseconds
+Results with Thread Count: 2048 and Block Size: 64
+Add Time nanoseconds:	 4010
+Sub Time nanoseconds:	 1948
+Mult Time nanoseconds:	 1491
+Mod Time nanoseconds:	 1386
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 54 nanoseconds
+Pageable copy took 8761 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1820 nanoseconds
+Decrypt took 1820 nanoseconds
+Copy device -> host took 5570 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 4273 nanoseconds
+Pinned copy took 9831 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1995 nanoseconds
+Decrypt took 1995 nanoseconds
+Copy device -> host took 4521 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 349 nanoseconds
+Pageable copy took 9291 nanoseconds
+Copy device -> host took 12096 nanoseconds
+Results with Thread Count: 1024 and Block Size: 512
+Add Time nanoseconds:	 7995
+Sub Time nanoseconds:	 2606
+Mult Time nanoseconds:	 1376
+Mod Time nanoseconds:	 1514
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 418400 nanoseconds
+Pinned copy took 10000 nanoseconds
+Copy device -> host took 7753 nanoseconds
+Results with Thread Count: 1024 and Block Size: 512
+Add Time nanoseconds:	 3796
+Sub Time nanoseconds:	 1887
+Mult Time nanoseconds:	 1454
+Mod Time nanoseconds:	 1407
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 65 nanoseconds
+Pageable copy took 8251 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1859 nanoseconds
+Decrypt took 1859 nanoseconds
+Copy device -> host took 5482 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3855 nanoseconds
+Pinned copy took 9542 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1943 nanoseconds
+Decrypt took 1943 nanoseconds
+Copy device -> host took 4330 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 466 nanoseconds
+Pageable copy took 6900 nanoseconds
+Copy device -> host took 12018 nanoseconds
+Results with Thread Count: 1024 and Block Size: 256
+Add Time nanoseconds:	 7966
+Sub Time nanoseconds:	 2357
+Mult Time nanoseconds:	 1573
+Mod Time nanoseconds:	 1617
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 411939 nanoseconds
+Pinned copy took 9724 nanoseconds
+Copy device -> host took 7792 nanoseconds
+Results with Thread Count: 1024 and Block Size: 256
+Add Time nanoseconds:	 3799
+Sub Time nanoseconds:	 1815
+Mult Time nanoseconds:	 1459
+Mod Time nanoseconds:	 1668
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 53 nanoseconds
+Pageable copy took 8426 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1892 nanoseconds
+Decrypt took 1892 nanoseconds
+Copy device -> host took 5618 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 4096 nanoseconds
+Pinned copy took 9564 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1995 nanoseconds
+Decrypt took 1995 nanoseconds
+Copy device -> host took 4539 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 353 nanoseconds
+Pageable copy took 6727 nanoseconds
+Copy device -> host took 12334 nanoseconds
+Results with Thread Count: 1024 and Block Size: 128
+Add Time nanoseconds:	 7251
+Sub Time nanoseconds:	 2321
+Mult Time nanoseconds:	 1507
+Mod Time nanoseconds:	 1629
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 416389 nanoseconds
+Pinned copy took 10254 nanoseconds
+Copy device -> host took 8027 nanoseconds
+Results with Thread Count: 1024 and Block Size: 128
+Add Time nanoseconds:	 3904
+Sub Time nanoseconds:	 1876
+Mult Time nanoseconds:	 1525
+Mod Time nanoseconds:	 1468
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 51 nanoseconds
+Pageable copy took 8935 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1931 nanoseconds
+Decrypt took 1931 nanoseconds
+Copy device -> host took 5519 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3977 nanoseconds
+Pinned copy took 9795 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2051 nanoseconds
+Decrypt took 2051 nanoseconds
+Copy device -> host took 4749 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 386 nanoseconds
+Pageable copy took 6718 nanoseconds
+Copy device -> host took 11268 nanoseconds
+Results with Thread Count: 1024 and Block Size: 64
+Add Time nanoseconds:	 7879
+Sub Time nanoseconds:	 2360
+Mult Time nanoseconds:	 1505
+Mod Time nanoseconds:	 1633
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 411911 nanoseconds
+Pinned copy took 9996 nanoseconds
+Copy device -> host took 7649 nanoseconds
+Results with Thread Count: 1024 and Block Size: 64
+Add Time nanoseconds:	 3651
+Sub Time nanoseconds:	 1828
+Mult Time nanoseconds:	 1433
+Mod Time nanoseconds:	 1417
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 62 nanoseconds
+Pageable copy took 8222 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1751 nanoseconds
+Decrypt took 1751 nanoseconds
+Copy device -> host took 5772 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3915 nanoseconds
+Pinned copy took 9256 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2018 nanoseconds
+Decrypt took 2018 nanoseconds
+Copy device -> host took 4397 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 346 nanoseconds
+Pageable copy took 6910 nanoseconds
+Copy device -> host took 11365 nanoseconds
+Results with Thread Count: 1024 and Block Size: 32
+Add Time nanoseconds:	 7618
+Sub Time nanoseconds:	 2252
+Mult Time nanoseconds:	 1456
+Mod Time nanoseconds:	 1609
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 413343 nanoseconds
+Pinned copy took 10019 nanoseconds
+Copy device -> host took 7553 nanoseconds
+Results with Thread Count: 1024 and Block Size: 32
+Add Time nanoseconds:	 3868
+Sub Time nanoseconds:	 1809
+Mult Time nanoseconds:	 1464
+Mod Time nanoseconds:	 1441
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 61 nanoseconds
+Pageable copy took 8817 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1915 nanoseconds
+Decrypt took 1915 nanoseconds
+Copy device -> host took 5597 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3896 nanoseconds
+Pinned copy took 9968 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2058 nanoseconds
+Decrypt took 2058 nanoseconds
+Copy device -> host took 4783 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 338 nanoseconds
+Pageable copy took 6823 nanoseconds
+Copy device -> host took 10276 nanoseconds
+Results with Thread Count: 512 and Block Size: 256
+Add Time nanoseconds:	 7729
+Sub Time nanoseconds:	 2473
+Mult Time nanoseconds:	 1408
+Mod Time nanoseconds:	 1528
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 416905 nanoseconds
+Pinned copy took 9491 nanoseconds
+Copy device -> host took 6556 nanoseconds
+Results with Thread Count: 512 and Block Size: 256
+Add Time nanoseconds:	 3798
+Sub Time nanoseconds:	 1905
+Mult Time nanoseconds:	 1413
+Mod Time nanoseconds:	 1502
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 67 nanoseconds
+Pageable copy took 8337 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1907 nanoseconds
+Decrypt took 1907 nanoseconds
+Copy device -> host took 5386 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 4152 nanoseconds
+Pinned copy took 9275 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2027 nanoseconds
+Decrypt took 2027 nanoseconds
+Copy device -> host took 4408 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 348 nanoseconds
+Pageable copy took 7229 nanoseconds
+Copy device -> host took 10855 nanoseconds
+Results with Thread Count: 512 and Block Size: 128
+Add Time nanoseconds:	 8171
+Sub Time nanoseconds:	 2356
+Mult Time nanoseconds:	 1717
+Mod Time nanoseconds:	 1697
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 440402 nanoseconds
+Pinned copy took 9624 nanoseconds
+Copy device -> host took 6872 nanoseconds
+Results with Thread Count: 512 and Block Size: 128
+Add Time nanoseconds:	 4016
+Sub Time nanoseconds:	 1889
+Mult Time nanoseconds:	 1537
+Mod Time nanoseconds:	 1492
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 56 nanoseconds
+Pageable copy took 8764 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2004 nanoseconds
+Decrypt took 2004 nanoseconds
+Copy device -> host took 5632 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 4261 nanoseconds
+Pinned copy took 10089 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2119 nanoseconds
+Decrypt took 2119 nanoseconds
+Copy device -> host took 4807 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 345 nanoseconds
+Pageable copy took 6319 nanoseconds
+Copy device -> host took 10512 nanoseconds
+Results with Thread Count: 512 and Block Size: 64
+Add Time nanoseconds:	 7813
+Sub Time nanoseconds:	 2253
+Mult Time nanoseconds:	 1635
+Mod Time nanoseconds:	 1581
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 419632 nanoseconds
+Pinned copy took 9415 nanoseconds
+Copy device -> host took 6937 nanoseconds
+Results with Thread Count: 512 and Block Size: 64
+Add Time nanoseconds:	 3764
+Sub Time nanoseconds:	 1874
+Mult Time nanoseconds:	 1515
+Mod Time nanoseconds:	 1464
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 60 nanoseconds
+Pageable copy took 8530 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1914 nanoseconds
+Decrypt took 1914 nanoseconds
+Copy device -> host took 5466 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3971 nanoseconds
+Pinned copy took 9481 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2086 nanoseconds
+Decrypt took 2086 nanoseconds
+Copy device -> host took 4717 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 317 nanoseconds
+Pageable copy took 6491 nanoseconds
+Copy device -> host took 10523 nanoseconds
+Results with Thread Count: 512 and Block Size: 32
+Add Time nanoseconds:	 7325
+Sub Time nanoseconds:	 2334
+Mult Time nanoseconds:	 1484
+Mod Time nanoseconds:	 1605
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 416184 nanoseconds
+Pinned copy took 9191 nanoseconds
+Copy device -> host took 6729 nanoseconds
+Results with Thread Count: 512 and Block Size: 32
+Add Time nanoseconds:	 3659
+Sub Time nanoseconds:	 1916
+Mult Time nanoseconds:	 1499
+Mod Time nanoseconds:	 1403
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 75 nanoseconds
+Pageable copy took 8418 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1887 nanoseconds
+Decrypt took 1887 nanoseconds
+Copy device -> host took 5600 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3970 nanoseconds
+Pinned copy took 9476 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2128 nanoseconds
+Decrypt took 2128 nanoseconds
+Copy device -> host took 4466 nanoseconds
+####################### PAGEABLE MEMORY #########################
+Pageable malloc took 320 nanoseconds
+Pageable copy took 8846 nanoseconds
+Copy device -> host took 10424 nanoseconds
+Results with Thread Count: 512 and Block Size: 16
+Add Time nanoseconds:	 7514
+Sub Time nanoseconds:	 2263
+Mult Time nanoseconds:	 1462
+Mod Time nanoseconds:	 1588
+####################### PINNABLE MEMORY #########################
+Pinned malloc took 414249 nanoseconds
+Pinned copy took 9177 nanoseconds
+Copy device -> host took 6726 nanoseconds
+Results with Thread Count: 512 and Block Size: 16
+Add Time nanoseconds:	 3620
+Sub Time nanoseconds:	 1740
+Mult Time nanoseconds:	 1395
+Mod Time nanoseconds:	 1356
+
+
+####################### CIPHER START #########################
+Cipher is hardcoded to 4 blocks @ 128 threads per block
+
+Pageable malloc took 52 nanoseconds
+Pageable copy took 8403 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 1881 nanoseconds
+Decrypt took 1881 nanoseconds
+Copy device -> host took 5427 nanoseconds
+####################### CIPHER PINNABLE #########################
+Pinned malloc took 3986 nanoseconds
+Pinned copy took 9257 nanoseconds
+
+Encrypted data:
+Oruhp#lsvxp#groru#vlw#dphw/#frqvhfwhwxu#dglslvflqj#holw1Xw#vhg#ihxjldw#iholv1#Yhvwlexoxp#dffxpvdq#ruqduh#frqydoolv1Skdvhooxv#qxood#qxqf/#gljqlvvlp#vhg#yxosxwdwh#txlv/#oxfwxv#ihxjldwholw1#Ylydpxv#frqvhfwhwxu#pdjqd#ulvxv/#xw#frqglphqwxp#txdp#hjhvwdvhohphqwxp1#Ixvfh#vhg#pdxulv#lq#h{#srvxhuh#xowulflhv1#Shoohqwhvtxh#dwyhqhqdwlv#hvw1#Yhvwlexoxp#ylwdh#dffxpvdq#odfxv1#Qxqf#vdjlwwlv#khqguhulwvhp#xw#ylyhuud1#Pruel#vhg#vrgdohv#vhp1#Lqwhjhu#khqguhulw#holw#yho#yholwwlqflgxqw/#ylwdh#prohvwlh#sxuxv#ldfxolv#judylgd/#kl1
+
+
+Decrypted data: Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut sed feugiat felis. Vestibulum accumsan ornare convallis.
+Phasellus nulla nunc, dignissim sed vulputate quis, luctus feugiatelit. Vivamus consectetur magna risus, ut condimentum quam egestas
+elementum. Fusce sed mauris in ex posuere ultricies. Pellentesque atvenenatis est. Vestibulum vitae accumsan lacus. Nunc sagittis hendrerit
+sem ut viverra. Morbi sed sodales sem. Integer hendrerit elit vel velittincidunt, vitae molestie purus iaculis gravida, hi.
+
+THEY MATCH!
+
+Encrypt took 2016 nanoseconds
+Decrypt took 2016 nanoseconds
+Copy device -> host took 4432 nanoseconds
