@@ -1,3 +1,4 @@
+make
 ./assignment.exe 2048 1024
 ./assignment.exe 2048 512
 ./assignment.exe 2048 256
