@@ -1,0 +1,72 @@
+make
+printf "\nThread count: 2048\n"
+./assignment.exe 2048 32
+./assignment.exe 2048 32
+./assignment.exe 2048 32
+./assignment.exe 2048 64
+./assignment.exe 2048 64
+./assignment.exe 2048 64
+./assignment.exe 2048 128
+./assignment.exe 2048 128
+./assignment.exe 2048 128
+./assignment.exe 2048 256
+./assignment.exe 2048 256
+./assignment.exe 2048 256
+./assignment.exe 2048 512
+./assignment.exe 2048 512
+./assignment.exe 2048 512
+./assignment.exe 2048 1024
+./assignment.exe 2048 1024
+./assignment.exe 2048 1024
+
+printf "\nThread count: 4096\n"
+./assignment.exe 4096 32
+./assignment.exe 4096 32
+./assignment.exe 4096 32
+./assignment.exe 4096 64
+./assignment.exe 4096 64
+./assignment.exe 4096 64
+./assignment.exe 4096 128
+./assignment.exe 4096 128
+./assignment.exe 4096 128
+./assignment.exe 4096 256
+./assignment.exe 4096 256
+./assignment.exe 4096 256
+./assignment.exe 4096 512
+./assignment.exe 4096 512
+./assignment.exe 4096 512
+./assignment.exe 4096 1024
+./assignment.exe 4096 1024
+./assignment.exe 4096 1024
+./assignment.exe 4096 2048
+./assignment.exe 4096 2048
+./assignment.exe 4096 2048
+
+printf "\nThread count: 16384\n"
+./assignment.exe 16384 32
+./assignment.exe 16384 32
+./assignment.exe 16384 32
+./assignment.exe 16384 64
+./assignment.exe 16384 64
+./assignment.exe 16384 64
+./assignment.exe 16384 128
+./assignment.exe 16384 128
+./assignment.exe 16384 128
+./assignment.exe 16384 256
+./assignment.exe 16384 256
+./assignment.exe 16384 256
+./assignment.exe 16384 512
+./assignment.exe 16384 512
+./assignment.exe 16384 512
+./assignment.exe 16384 1024
+./assignment.exe 16384 1024
+./assignment.exe 16384 1024
+./assignment.exe 16384 2048
+./assignment.exe 16384 2048
+./assignment.exe 16384 2048
+./assignment.exe 16384 4096
+./assignment.exe 16384 4096
+./assignment.exe 16384 4096
+./assignment.exe 16384 8192
+./assignment.exe 16384 8192
+./assignment.exe 16384 8192
