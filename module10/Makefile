@@ -1,2 +1,2 @@
-all: assignment.c
-	gcc assignment.c -o assignment.exe
+all: HelloWorld.cpp HelloWorld.cl
+	g++ -I/usr/local/cuda/include/ HelloWorld.cpp -std=c++11 -lOpenCL -o assignment.exe

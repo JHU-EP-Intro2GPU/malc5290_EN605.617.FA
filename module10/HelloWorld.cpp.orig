@@ -12,13 +12,10 @@
 //
 //    This is a simple example that demonstrates basic OpenCL setup and
 //    use.
-#include "my_gpu_helper.h"
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <string>
-#include <cstring>
 
 #ifdef __APPLE__
 #include <OpenCL/cl.h>
@@ -227,7 +224,7 @@ void Cleanup(cl_context context, cl_command_queue commandQueue,
 ///
 //	main() for HelloWorld example
 //
-int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& print_array)
+int main(int argc, char** argv)
 {
     cl_context context = 0;
     cl_command_queue commandQueue = 0;
@@ -236,7 +233,7 @@ int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& pri
     cl_kernel kernel = 0;
     cl_mem memObjects[3] = { 0, 0, 0 };
     cl_int errNum;
-    run_time_ns = -1;
+
     // Create an OpenCL context on first available platform
     context = CreateContext();
     if (context == NULL)
@@ -263,7 +260,7 @@ int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& pri
     }
 
     // Create OpenCL kernel
-    kernel = clCreateKernel(program, kernel_name.c_str(), NULL);
+    kernel = clCreateKernel(program, "mul_kernel", NULL);
     if (kernel == NULL)
     {
         std::cerr << "Failed to create kernel" << std::endl;
@@ -303,7 +300,6 @@ int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& pri
     size_t globalWorkSize[1] = { ARRAY_SIZE };
     size_t localWorkSize[1] = { 1 };
 
-    auto start = get_clock_time();
     // Queue the kernel up for execution across the array
     errNum = clEnqueueNDRangeKernel(commandQueue, kernel, 1, NULL,
                                     globalWorkSize, localWorkSize,
@@ -314,8 +310,7 @@ int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& pri
         Cleanup(context, commandQueue, program, kernel, memObjects);
         return 1;
     }
-    auto end = get_clock_time();
-    run_time_ns = get_duration_ns( start, end );
+
     // Read the output buffer back to the Host
     errNum = clEnqueueReadBuffer(commandQueue, memObjects[2], CL_TRUE,
                                  0, ARRAY_SIZE * sizeof(float), result,
@@ -328,43 +323,13 @@ int run_kernel(const std::string& kernel_name, int& run_time_ns, const bool& pri
     }
 
     // Output the result buffer
-    if ( print_array )
+    for (int i = 0; i < ARRAY_SIZE; i++)
     {
-        for (int i = 0; i < ARRAY_SIZE; i++)
-        {
-            std::cout << result[i] << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "Executed program succesfully." << std::endl;
+        std::cout << result[i] << " ";
     }
+    std::cout << std::endl;
+    std::cout << "Executed program succesfully." << std::endl;
     Cleanup(context, commandQueue, program, kernel, memObjects);
 
     return 0;
-}
-
-int main(int argc, char** argv)
-{
-    bool print_array = true;
-    
-    if ( argc == 2 && strcmp(argv[1],"--no-print") == 0  )
-    {
-        print_array  = false;
-    }
-    int add_time, sub_time, mul_time, div_time, pow_time;
-    run_kernel( "add_kernel", add_time, print_array );
-    run_kernel( "sub_kernel", sub_time, print_array );
-    run_kernel( "mul_kernel", mul_time, print_array );
-    run_kernel( "div_kernel", div_time, print_array );
-    run_kernel( "pow_kernel", pow_time, print_array );
-    
-    if (add_time != -1)
-        std::cout << "Add took: " << add_time << " ns\n";
-    if (sub_time != -1)
-        std::cout << "Sub took: " << sub_time << " ns\n";
-    if (mul_time != -1)
-        std::cout << "Mul took: " << mul_time << " ns\n";
-    if (div_time != -1)
-        std::cout << "Div took: " << div_time << " ns\n";
-    if (pow_time != -1)
-        std::cout << "Pow took: " << pow_time << " ns\n";
 }
