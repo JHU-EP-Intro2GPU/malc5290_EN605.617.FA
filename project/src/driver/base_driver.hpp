@@ -1,6 +1,6 @@
 #ifndef en605_617_base_driver_hpp
 #define en605_617_base_driver_hpp
-#include "Matrix.hpp"
+#include "driver/Matrix.hpp"
 #include <string>
 #include <fstream>
 #include <vector>

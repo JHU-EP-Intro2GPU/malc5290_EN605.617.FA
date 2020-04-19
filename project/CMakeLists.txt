@@ -1,7 +1,6 @@
-
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 project(EN605_617_PROJECT LANGUAGES CXX CUDA)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 # include(CTest)
 
 include_directories(
