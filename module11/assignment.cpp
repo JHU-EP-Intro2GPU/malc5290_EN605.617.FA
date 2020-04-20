@@ -64,6 +64,7 @@ void generate_input_signal( int seed )
     {
         seed = 2;
     }
+    
     srand(seed);
     for( int i = 0; i < inputSignalWidth; i++ )
     {
