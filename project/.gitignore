@@ -31,3 +31,4 @@ util/matrix-gen/mat-identity8
 util/matrix-gen/strassens-mat4
 util/matrix-gen/testmat2_3a
 util/matrix-gen/testmat2_3b
+*.swp
