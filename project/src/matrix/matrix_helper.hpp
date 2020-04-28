@@ -38,7 +38,7 @@ namespace MatrixHelper
         {  
             ss << line;
             std::string value;
-            //std::cout << "SS: " << ss.str() << "\n";
+            
             while(std::getline(ss, value, ','))
             {   
                 valueStream.str(value);
@@ -62,15 +62,6 @@ namespace MatrixHelper
 
         std::vector<T> updatedMatrix;
         updatedMatrix.reserve(matrix.size());
-        //std::cout << "BEFORE: \n";
-        //std::cout << "MATRIX SIZE: " << matrix.size() << "\n";
-        //std::cout << "M SIZE: " << matrix.m_size() << "\n";
-        //std::cout << "N SIZE: " << matrix.n_size() << "\n";
-        /*for ( int i = 0; i < matrix.size(); i++ )
-        {
-            std::cout << matrix.matrix()[i] << ",";
-        }
-        std::cout << "\n";*/
         if ( matrix.orientation() == Orientation::ROW_MAJOR )
         {
             matrix.setOrientation(Orientation::COLUMN_MAJOR);
@@ -78,8 +69,6 @@ namespace MatrixHelper
             {
                 for ( int m = 0; m < matrix.m_size(); m++ )
                 {
-                //    T val = matrix.matrix()[matrix.n_size() * m + n];
-          //          std::cout << "INDEX: " << matrix.n_size() * m + n << " VAL: " << val << "\n";
                     updatedMatrix.push_back(matrix.matrix()[matrix.n_size() * m + n]); 
                 }
             }
@@ -91,18 +80,10 @@ namespace MatrixHelper
             {
                 for ( int n = 0; n < matrix.n_size(); n++ )
                 {
-              //      T val = matrix.matrix()[matrix.m_size() * n + m];
-            //        std::cout << "INDEX: " << matrix.n_size() * m + n << " VAL: " << val << "\n";
                     updatedMatrix.push_back(matrix.matrix()[matrix.m_size() * n + m]); 
                 }
             }
         }
-     /*   std::cout << "UPDATED MATRIX:\n";
-        for ( int i = 0; i < matrix.size(); i++ )
-        {
-            std::cout << updatedMatrix[i] << ",";
-        }
-        std::cout << "\n";*/
         matrix.setMatrix(updatedMatrix);
     }
 
