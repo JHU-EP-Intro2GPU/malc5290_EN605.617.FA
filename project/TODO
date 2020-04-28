@@ -6,9 +6,10 @@ Basic implementation of my own
 More advanced implementation of my own.
 Cutlas implementation
 OpenCL?
-Move Cublas Arg processing and matrix generation into class
 
 Done
 ----
 Framework (MOSTLY)
 Cublas
+Move Cublas Arg processing and matrix generation into helper
+

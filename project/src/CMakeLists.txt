@@ -1,6 +1,9 @@
 
 #add_library(DRIVER
 #    driver)
+set(BIN_INCLUDES
+    bin/bin_helper.hpp
+    )
 set(MATRIX_INCLUDES
     matrix/matrix_helper.hpp
     matrix/Matrix.hpp)
