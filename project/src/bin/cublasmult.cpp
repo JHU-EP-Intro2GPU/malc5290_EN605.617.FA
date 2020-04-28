@@ -1,11 +1,7 @@
-#include "driver/base_driver.hpp"
+#include "matrix/matrix_helper.hpp"
+#include "driver/cublas_driver.hpp"
 
 enum class InputDataType { INT, SHORT, DOUBLE, FLOAT };
-
-class TestDriver: public BaseDriver
-{
-
-};
 
 void print_help()
 {
@@ -19,8 +15,8 @@ void print_help()
     std::cout << "-o --out Flag for outputting a result file to the current directory\n";
 }
 
-    template <class T>
-Matrix<T> generate_matrix( BaseDriver& driver, const std::string& input_file )
+template <class T>
+Matrix<T> generate_matrix( const std::string& input_file )
 {
     std::fstream fs(input_file);
     if (!fs.is_open())
@@ -28,27 +24,29 @@ Matrix<T> generate_matrix( BaseDriver& driver, const std::string& input_file )
         std::cout << "File not found \"" << input_file << "\"\n";
         exit(1);
     }
-    auto matrix = driver.load_data<T>(fs);
-    std::cout << "MATRIX!\n";
-    for ( auto val : matrix.matrix() )
-    {
-        std::cout << val << "\n";
-    }
+    auto matrix = MatrixHelper::load_data<T>(fs);
+
     return matrix;
 }
 
-    template <class T>
-void multiply_matrices( BaseDriver& driver, const std::string& matrix_a_in, const std::string& matrix_b_in, bool write_results )
+template <class T>
+void multiply_matrices( const std::string& matrix_a_in, const std::string& matrix_b_in, bool write_results )
 {
-    auto mat_a = generate_matrix<T>( driver, matrix_a_in );
-    auto mat_b = generate_matrix<T>( driver, matrix_b_in );
-    std::cout << "WRITE RESULTS: " << write_results << "\n";
+    auto mat_a = generate_matrix<T>( matrix_a_in );
+    auto mat_b = generate_matrix<T>( matrix_b_in );
+    std::cout << "Matrix A\n";
+    MatrixHelper::print_matrix(Orientation::ROW_MAJOR, mat_a.m_size(), mat_a.n_size(), mat_a.matrix());
+    std::cout << "Matrix B\n";
+    MatrixHelper::print_matrix(Orientation::ROW_MAJOR, mat_b.m_size(), mat_b.n_size(), mat_b.matrix());
+
+    MatrixHelper::change_orientation<T>( mat_a, Orientation::COLUMN_MAJOR );
+    MatrixHelper::change_orientation<T>( mat_a, Orientation::ROW_MAJOR );
+    CublasDriver<T> driver(mat_a, mat_b);
+    driver.multiply_matrices();
 }
 
 int main(int argc, char* argv[])
 {
-    TestDriver td;
-
     std::string matrix_a_in;
     std::string matrix_b_in;
     InputDataType data_type;
@@ -117,16 +115,16 @@ int main(int argc, char* argv[])
     switch (data_type)
     {
         case InputDataType::INT:
-            multiply_matrices<int>( td, matrix_a_in, matrix_b_in, write_results );
+            multiply_matrices<int>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::SHORT:
-            multiply_matrices<short>( td, matrix_a_in, matrix_b_in, write_results );
+            multiply_matrices<short>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::DOUBLE:
-            multiply_matrices<double>( td, matrix_a_in, matrix_b_in, write_results );
+            multiply_matrices<double>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::FLOAT:
-            multiply_matrices<float>( td, matrix_a_in, matrix_b_in, write_results );
+            multiply_matrices<float>( matrix_a_in, matrix_b_in, write_results );
             break;
     }
 

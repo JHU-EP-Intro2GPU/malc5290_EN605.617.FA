@@ -1,19 +1,34 @@
 
 #add_library(DRIVER
 #    driver)
-set(DRIVERINCLUDES 
-    driver/base_driver.hpp
-    driver/Matrix.hpp)
+set(MATRIX_INCLUDES
+    matrix/matrix_helper.hpp
+    matrix/Matrix.hpp)
 
-include_directories(driver .)
+set(DRIVER_INCLUDES
+    driver/MatrixDriver.hpp
+    #    driver/IMatrixDriver.hpp
+    #driver/SMatrixDriver.hpp
+    #driver/FMatrixDriver.hpp
+    #driver/DMatrixDriver.hpp
+    driver/cublas_driver.hpp
+    )
 
-add_executable(test-driver bin/test.cpp
-    ${DRIVERINCLUDES})
+include_directories(matrix .)
 
-target_link_libraries(test-driver
-    PUBLIC)
+add_executable(cublasmult-driver bin/cublasmult.cpp
+    driver/cublas_driver.cu
+    driver/temp_driver.cpp
+    )
+    #${MATRIX_INCLUDES}
+    #${DRIVER_INCLUDES})
 
-target_include_directories(test-driver PUBLIC
-    ${PROJECT_BINARY_DIR}
-    "driver")
+target_link_libraries(cublasmult-driver
+    PUBLIC
+    -lcublas)
 
+target_include_directories(cublasmult-driver PUBLIC
+    ${PROJECT_BINARY_DIR})
+    #MATRIX_INCLUDES)
+
+    #target_link_libraries(cublasmult-driver )
