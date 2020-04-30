@@ -125,9 +125,9 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
             mat_a.m_size(),       // Row size of matrix A ( Leading dimension )
             cublas_b,             // Device pointer to matrix B
             mat_b.m_size(),       // Row size of matrix B ( Leading dimension )
-            1,                    // No scaling of result matrix
+            0,                    // No scaling of result matrix
             cublas_results,       // Device pointer to multiplication results
-            result_n);            // Row size of matrix C ( Leading dimension )
+            result_m);            // Row size of matrix C ( Leading dimension )
       
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
@@ -198,9 +198,9 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             mat_a.m_size(),       // Row size of matrix A ( Leading dimension )
             cublas_b,             // Device pointer to matrix B
             mat_b.m_size(),       // Row size of matrix B ( Leading dimension )
-            1,                    // No scaling of result matrix
-            cublas_results,       // Device pointer to multiplication results
-            result_n);            // Row size of matrix C ( Leading dimension )
+            0,                    // No scaling of result matrix
+            nullptr,              // Device pointer to multiplication results
+            result_m);            // Row size of matrix C ( Leading dimension )
       
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
