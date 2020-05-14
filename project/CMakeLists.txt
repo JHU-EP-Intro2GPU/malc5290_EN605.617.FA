@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 project(EN605_617_PROJECT LANGUAGES CXX CUDA)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 # include(CTest)
 set(CMAKE_CXX_FLAGS "-g")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -std=c++11 " )
+#set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS}" "-std=c++11")
+#set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS}" "-x cuda")
 include_directories(
     SYSTEM
     /usr/local/cuda/include

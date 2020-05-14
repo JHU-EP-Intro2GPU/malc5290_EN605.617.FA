@@ -53,6 +53,20 @@ namespace MatrixHelper
     }
 
     template <class T>
+    void copy_data( const Matrix<T>& data, T*& copy )
+    {
+        int index = 0;
+        for ( T val : data.matrix() )
+        {
+            copy[index] = val;
+            index++;
+#ifdef DEBUG
+            std::cout << "COPYING: " << val << "\n";
+#endif
+        }
+    }
+
+    template <class T>
     void change_orientation( Matrix<T>& matrix, const Orientation& orientation )
     {
         if ( matrix.orientation() == orientation )

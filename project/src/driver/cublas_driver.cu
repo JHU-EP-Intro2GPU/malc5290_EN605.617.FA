@@ -1,21 +1,8 @@
 #include "driver/cublas_driver.hpp"
+#include "driver/performance_helper.hpp"
 #include "matrix/matrix_helper.hpp"
 #include <iostream>
 #include <cublas.h>
-
-template <class T>
-void copy_data( const Matrix<T>& data, T*& copy )
-{
-    int index = 0;
-    for ( T val : data.matrix() )
-    {
-        copy[index] = val;
-        index++;
-#ifdef DEBUG
-        std::cout << "COPYING: " << val << "\n";
-#endif
-    }
-}
 
 template <class T>
 void init_data(cublasStatus& status, const Matrix<T>& mat_a, const Matrix<T>& mat_b, T*& a, T*& b, T*& results, T*& cublas_a, T*& cublas_b, T*& cublas_results )
@@ -23,8 +10,8 @@ void init_data(cublasStatus& status, const Matrix<T>& mat_a, const Matrix<T>& ma
     a = (T*)malloc(mat_a.size() * sizeof(T));
     b = (T*)malloc(mat_b.size() * sizeof(T));
     results = (T*)malloc(mat_a.m_size() * mat_b.n_size() * sizeof(T));
-    copy_data<T>(mat_a, a);
-    copy_data<T>(mat_b, b);
+    MatrixHelper::copy_data<T>(mat_a, a);
+    MatrixHelper::copy_data<T>(mat_b, b);
     int result_m = mat_a.m_size();
     int result_n = mat_b.n_size();
 
@@ -114,6 +101,7 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
     std::cout << "B: M" << mat_b.m_size() << "\n";
     std::cout << "B: N" << mat_b.n_size() << "\n";
 #endif
+    auto start = get_clock_time();
     cublasSgemm(
             'n',                  // Normal
             'n',                  // Normal
@@ -128,6 +116,9 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
             0,                    // No scaling of result matrix
             cublas_results,       // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
+    auto stop = get_clock_time();
+
+    std::cout << get_duration_seconds(start, stop) << "\n";
       
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
@@ -141,8 +132,6 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
         exit(EXIT_FAILURE);
     }
     
-    std::cout << "Results!\n";
-    MatrixHelper::print_matrix<float>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
     free_data<float>(
             a,
             b,
@@ -186,7 +175,7 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
     std::cout << "B: M" << mat_b.m_size() << "\n";
     std::cout << "B: N" << mat_b.n_size() << "\n";
 #endif
-
+    auto start = get_clock_time();
     cublasDgemm(
             'n',                  // Normal
             'n',                  // Normal
@@ -201,7 +190,10 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             0,                    // No scaling of result matrix
             nullptr,              // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
-      
+    auto stop = get_clock_time();
+
+    std::cout << get_duration_seconds(start, stop) << "\n";
+    
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
     {
@@ -212,12 +204,6 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
     if (status != CUBLAS_STATUS_SUCCESS)
     {
         exit(EXIT_FAILURE);
-    }
-    
-    std::cout << "Results!\n";
-    for ( int i = 0; i < result_m * result_n; i++ )
-    {
-        std::cout << results[i] << "\n";
     }
 
     free_data<double>(
@@ -232,7 +218,6 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
 template <class T>
 void CublasDriver<T>::multiply_matrices()
 {
-    std::cout << "CUBLAS DRIVER: MULTIPLY_MATRICES\n";
     if ( MatrixDriver<T>::_mat_a.orientation() == Orientation::ROW_MAJOR )
     {
         MatrixHelper::change_orientation(MatrixDriver<T>::_mat_a,Orientation::COLUMN_MAJOR); 
@@ -241,7 +226,6 @@ void CublasDriver<T>::multiply_matrices()
     {
         MatrixHelper::change_orientation(MatrixDriver<T>::_mat_b,Orientation::COLUMN_MAJOR); 
     }
-    std::cout << "ORIENTATION CHANGED TO COLUMN MAJOR FOR CUBLAS\n";
     multiply<T>(MatrixDriver<T>::_mat_a, MatrixDriver<T>::_mat_b);
 }
 

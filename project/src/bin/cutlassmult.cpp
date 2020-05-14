@@ -1,4 +1,4 @@
-#include "driver/cublas_driver.hpp"
+#include "driver/cutlass_driver.hpp"
 #include "bin/bin_helper.hpp"
 
 
@@ -7,8 +7,8 @@ void multiply_matrices( const std::string& matrix_a_in, const std::string& matri
 {
     auto mat_a = generate_matrix<T>( matrix_a_in );
     auto mat_b = generate_matrix<T>( matrix_b_in );
-
-    CublasDriver<T> driver(mat_a, mat_b);
+    
+    CutlassDriver<T> driver(mat_a, mat_b);
     driver.multiply_matrices();
 }
 
