@@ -222,6 +222,7 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
     int result_m = mat_a.m_size();
     int result_n = mat_b.n_size();
 
+    auto start = get_clock_time();
     init_data<T>(
             status,         // Cublas Status
             mat_a,          // Matrix A
@@ -233,6 +234,8 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
             d_b,            // Device pointer to matrix B values
             d_results,      // Device pointer to multiplication results
             d_multinfo);       
+    auto stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
 #ifdef DEBUG
     std::cout << "A: M" << mat_a.m_size() << "\n";
     std::cout << "A: N" << mat_a.n_size() << "\n";
@@ -246,18 +249,21 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
         ( result_m + block.y - 1 ) / block.y + 1
     );
    
-    auto start = get_clock_time();
+    start = get_clock_time();
     _naive_multiply<T>( d_multinfo, d_a, d_b, d_results, block, grid );
-    auto stop = get_clock_time();
+    stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
     
+    start = get_clock_time();
     cudaError_t cuda_result = cudaMemcpy( results, d_results, result_m * result_n * sizeof(T), cudaMemcpyDeviceToHost);
     if ( cuda_result != cudaSuccess )
     {
         std::cerr << "Failed to copy result post multiply: \n" << cudaGetErrorString(cuda_result) << std::endl;
         exit(EXIT_FAILURE);
     }
-
+    stop = get_clock_time();
     std::cout << get_duration_seconds(start, stop) << "\n";
+
     //MatrixHelper::print_matrix<T>(Orientation::ROW_MAJOR, result_m, result_n, results);
     //MatrixHelper::print_matrix<T>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
 

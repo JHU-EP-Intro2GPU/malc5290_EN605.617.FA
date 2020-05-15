@@ -85,6 +85,7 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
     int result_m = mat_a.m_size();
     int result_n = mat_b.n_size();
 
+    auto start = get_clock_time();
     init_data<float>(
             status,                // Cublas Status
             mat_a,                 // Matrix A
@@ -95,13 +96,16 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
             cublas_a,              // Device pointer to matrix A values 
             cublas_b,              // Device pointer to matrix B values
             cublas_results);       // Device pointer to multiplication results
+    auto stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
+
 #ifdef DEBUG
     std::cout << "A: M" << mat_a.m_size() << "\n";
     std::cout << "A: N" << mat_a.n_size() << "\n";
     std::cout << "B: M" << mat_b.m_size() << "\n";
     std::cout << "B: N" << mat_b.n_size() << "\n";
 #endif
-    auto start = get_clock_time();
+    start = get_clock_time();
     cublasSgemm(
             'n',                  // Normal
             'n',                  // Normal
@@ -116,9 +120,8 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
             0,                    // No scaling of result matrix
             cublas_results,       // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
-    auto stop = get_clock_time();
-
-    std::cout << get_duration_seconds(start, stop) << "\n";
+    stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
       
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
@@ -126,11 +129,14 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
         exit(EXIT_FAILURE);
     }
   
+    start = get_clock_time();
     cublasGetMatrix(result_m, result_n, sizeof(float), cublas_results, result_m, results, result_m);
     if (status != CUBLAS_STATUS_SUCCESS)
     {
         exit(EXIT_FAILURE);
     }
+    stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << std::endl;
     
     free_data<float>(
             a,
@@ -157,7 +163,8 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
 
     int result_m = mat_a.m_size();
     int result_n = mat_b.n_size();
-
+    
+    auto start = get_clock_time();
     init_data<double>(
             status,                // Cublas Status
             mat_a,                 // Matrix A
@@ -168,14 +175,16 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             cublas_a,              // Device pointer to matrix A values 
             cublas_b,              // Device pointer to matrix B values
             cublas_results);       // Device pointer to multiplication results
-    
+    auto stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
+
 #ifdef DEBUG
     std::cout << "A: M" << mat_a.m_size() << "\n";
     std::cout << "A: N" << mat_a.n_size() << "\n";
     std::cout << "B: M" << mat_b.m_size() << "\n";
     std::cout << "B: N" << mat_b.n_size() << "\n";
 #endif
-    auto start = get_clock_time();
+    start = get_clock_time();
     cublasDgemm(
             'n',                  // Normal
             'n',                  // Normal
@@ -190,21 +199,24 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             0,                    // No scaling of result matrix
             nullptr,              // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
-    auto stop = get_clock_time();
+    stop = get_clock_time();
 
-    std::cout << get_duration_seconds(start, stop) << "\n";
+    std::cout << get_duration_seconds(start, stop) << " ";
     
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
     {
         exit(EXIT_FAILURE);
     }
-  
+    
+    start = get_clock_time();
     cublasGetMatrix(result_m, result_n, sizeof(double), cublas_results, result_m, results, result_m);
     if (status != CUBLAS_STATUS_SUCCESS)
     {
         exit(EXIT_FAILURE);
     }
+    stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << std::endl;
 
     free_data<double>(
             a,

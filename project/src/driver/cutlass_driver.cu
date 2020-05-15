@@ -83,29 +83,83 @@ void free_data(T*& a, T*& b, T*& results, T*& cutlass_a, T*& cutlass_b, T*& cutl
 }
 
 template <class T>
-void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
+cutlass::Status  multiply(T* a, T* b, T* results, T* cutlass_a, T* cutlass_b, T* cutlass_results, const int& result_m, const int& result_n, const int& aNSize )
 {
-    std::cerr << "Unspported type for CUTLASS\n";
-    exit(1);
+    return cutlass::Status::kInvalid;
 }
 
-// short specialization for multiply
 template <>
-void multiply<short>( const Matrix<short> mat_a, const Matrix<short> mat_b )
+cutlass::Status multiply<double>(double* a, double* b, double* results, double* cutlass_a, double* cutlass_b, double* cutlass_results, const int& result_m, const int& result_n, const int& aNSize )
+{
+    DoubleGemm gemm_operator; 
+    
+    DoubleGemm::Arguments args({ result_m, result_n, aNSize },
+                                {cutlass_a, result_m},
+                                {cutlass_b, aNSize},
+                                {cutlass_results, result_m},
+                                {cutlass_results, result_m},
+                                {1, 0});
+    return gemm_operator(args);
+}
+
+template <>
+cutlass::Status multiply<float>(float* a, float* b, float* results, float* cutlass_a, float* cutlass_b, float* cutlass_results, const int& result_m, const int& result_n , const int& aNSize )
+{
+    FloatGemm gemm_operator; 
+    
+    FloatGemm::Arguments args({ result_m, result_n, aNSize },
+                                {cutlass_a, result_m},
+                                {cutlass_b, aNSize},
+                                {cutlass_results, result_m},
+                                {cutlass_results, result_m},
+                                {1, 0});
+    return gemm_operator(args);
+}
+
+template <>
+cutlass::Status multiply<int>(int* a, int* b, int* results, int* cutlass_a, int* cutlass_b, int* cutlass_results, const int& result_m, const int& result_n, const int& aNSize  )
+{
+    IntGemm gemm_operator; 
+    
+    IntGemm::Arguments args({ result_m, result_n, aNSize },
+                                {cutlass_a, result_m},
+                                {cutlass_b, aNSize},
+                                {cutlass_results, result_m},
+                                {cutlass_results, result_m},
+                                {1, 0});
+    return gemm_operator(args);
+}
+
+template <>
+cutlass::Status multiply<short>(short* a, short* b, short* results, short* cutlass_a, short* cutlass_b, short* cutlass_results, const int& result_m, const int& result_n, const int& aNSize  )
+{
+    ShortGemm gemm_operator; 
+    
+    ShortGemm::Arguments args({ result_m, result_n, aNSize },
+                                {cutlass_a, result_m},
+                                {cutlass_b, aNSize},
+                                {cutlass_results, result_m},
+                                {cutlass_results, result_m},
+                                {1, 0});
+    return gemm_operator(args);
+}
+
+template <class T>
+void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
 {
     cutlass::Status status;
 
-    short* a; 
-    short* b;
-    short* results;
-    short* cutlass_a;
-    short* cutlass_b;
-    short* cutlass_results;
+    T* a; 
+    T* b;
+    T* results;
+    T* cutlass_a;
+    T* cutlass_b;
+    T* cutlass_results;
 
     int result_m = mat_a.m_size();
     int result_n = mat_b.n_size();
-
-    init_data<short>(
+    auto start = get_clock_time();
+    init_data<T>(
             status,                // Cublas Status
             mat_a,                 // Matrix A
             mat_b,                 // Matrix B
@@ -115,26 +169,20 @@ void multiply<short>( const Matrix<short> mat_a, const Matrix<short> mat_b )
             cutlass_a,              // Device pointer to matrix A values 
             cutlass_b,              // Device pointer to matrix B values
             cutlass_results);       // Device pointer to multiplication results
+    auto stop = get_clock_time();
+    std::cout << get_duration_seconds(start, stop) << " ";
+
 #ifdef DEBUG
     std::cout << "A: M" << mat_a.m_size() << "\n";
     std::cout << "A: N" << mat_a.n_size() << "\n";
     std::cout << "B: M" << mat_b.m_size() << "\n";
     std::cout << "B: N" << mat_b.n_size() << "\n";
 #endif
-    ShortGemm gemm_operator; 
-    
-    ShortGemm::Arguments args({ mat_a.m_size(), mat_b.n_size(), mat_a.n_size() },
-                                {cutlass_a, mat_a.m_size()},
-                                {cutlass_b, mat_b.m_size()},
-                                {cutlass_results, result_m},
-                                {cutlass_results, result_m},
-                                {1, 0});
-
-    auto start = get_clock_time();
-    status =  gemm_operator(args);
-    auto stop = get_clock_time();
+    start = get_clock_time();
+    status = multiply(a, b, results, cutlass_a, cutlass_b, cutlass_results, result_m, result_n, mat_a.n_size());
+    stop = get_clock_time();
     if (status != cutlass::Status::kSuccess) {
-        free_data<short>(
+        free_data<T>(
             a,
             b,
             results,
@@ -144,10 +192,12 @@ void multiply<short>( const Matrix<short> mat_a, const Matrix<short> mat_b )
         std::cerr << "FAILED TO RUN GEMM\n";
         exit(EXIT_FAILURE);
     }
+    std::cout << get_duration_seconds(start, stop) << " ";
 
+    start = get_clock_time();
+    cudaError_t cuda_result = cudaMemcpy( results, cutlass_results, result_m * result_n * sizeof(T), cudaMemcpyDeviceToHost);
+    stop = get_clock_time();
     std::cout << get_duration_seconds(start, stop) << "\n";
-
-    cudaError_t cuda_result = cudaMemcpy( results, cutlass_results, result_m * result_n * sizeof(short), cudaMemcpyDeviceToHost);
     if ( cuda_result != cudaSuccess )
     {
         std::cerr << "Failed to copy result post gemm: \n" << cudaGetErrorString(cuda_result) << std::endl;
@@ -155,247 +205,16 @@ void multiply<short>( const Matrix<short> mat_a, const Matrix<short> mat_b )
     }
 
     //MatrixHelper::print_matrix<short>(Orientation::ROW_MAJOR, result_m, result_n, results);
-    //MatrixHelper::print_matrix<short>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
+    MatrixHelper::print_matrix<T>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
 
-    free_data<short>(
+    free_data<T>(
             a,
             b,
             results,
             cutlass_a,
             cutlass_b,
             cutlass_results);   
-}
 
-// Int specialization for multiply
-template <>
-void multiply<int>( const Matrix<int> mat_a, const Matrix<int> mat_b )
-{
-    cutlass::Status status;
-
-    int* a; 
-    int* b;
-    int* results;
-    int* cutlass_a;
-    int* cutlass_b;
-    int* cutlass_results;
-
-    int result_m = mat_a.m_size();
-    int result_n = mat_b.n_size();
-
-    init_data<int>(
-            status,                // Cublas Status
-            mat_a,                 // Matrix A
-            mat_b,                 // Matrix B
-            a,                     // Pointer to matrix A values
-            b,                     // Pointer to matrix B values
-            results,               // Pointer to multiplication results
-            cutlass_a,              // Device pointer to matrix A values 
-            cutlass_b,              // Device pointer to matrix B values
-            cutlass_results);       // Device pointer to multiplication results
-#ifdef DEBUG
-    std::cout << "A: M" << mat_a.m_size() << "\n";
-    std::cout << "A: N" << mat_a.n_size() << "\n";
-    std::cout << "B: M" << mat_b.m_size() << "\n";
-    std::cout << "B: N" << mat_b.n_size() << "\n";
-#endif
-    IntGemm gemm_operator; 
-    
-    IntGemm::Arguments args({ mat_a.m_size(), mat_b.n_size(), mat_a.n_size() },
-                                {cutlass_a, mat_a.m_size()},
-                                {cutlass_b, mat_b.m_size()},
-                                {cutlass_results, result_m},
-                                {cutlass_results, result_m},
-                                {1, 0});
-
-    auto start = get_clock_time();
-    status =  gemm_operator(args);
-    auto stop = get_clock_time();
-    if (status != cutlass::Status::kSuccess) {
-        free_data<int>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
-        std::cerr << "FAILED TO RUN GEMM\n";
-        exit(EXIT_FAILURE);
-    }
-
-    std::cout << get_duration_seconds(start, stop) << "\n";
-
-    cudaError_t cuda_result = cudaMemcpy( results, cutlass_results, result_m * result_n * sizeof(int), cudaMemcpyDeviceToHost);
-    if ( cuda_result != cudaSuccess )
-    {
-        std::cerr << "Failed to copy result post gemm: \n" << cudaGetErrorString(cuda_result) << std::endl;
-        exit(EXIT_FAILURE);
-    }
-
-    //MatrixHelper::print_matrix<int>(Orientation::ROW_MAJOR, result_m, result_n, results);
-    //MatrixHelper::print_matrix<int>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
-
-    free_data<int>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
-}
-// Float specialization for multiply
-template <>
-void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
-{
-    cutlass::Status status;
-
-    float* a; 
-    float* b;
-    float* results;
-    float* cutlass_a;
-    float* cutlass_b;
-    float* cutlass_results;
-
-    int result_m = mat_a.m_size();
-    int result_n = mat_b.n_size();
-
-    init_data<float>(
-            status,                // Cublas Status
-            mat_a,                 // Matrix A
-            mat_b,                 // Matrix B
-            a,                     // Pointer to matrix A values
-            b,                     // Pointer to matrix B values
-            results,               // Pointer to multiplication results
-            cutlass_a,              // Device pointer to matrix A values 
-            cutlass_b,              // Device pointer to matrix B values
-            cutlass_results);       // Device pointer to multiplication results
-#ifdef DEBUG
-    std::cout << "A: M" << mat_a.m_size() << "\n";
-    std::cout << "A: N" << mat_a.n_size() << "\n";
-    std::cout << "B: M" << mat_b.m_size() << "\n";
-    std::cout << "B: N" << mat_b.n_size() << "\n";
-#endif
-    FloatGemm gemm_operator; 
-    
-    FloatGemm::Arguments args({ mat_a.m_size(), mat_b.n_size(), mat_a.n_size() },
-                                {cutlass_a, mat_a.m_size()},
-                                {cutlass_b, mat_b.m_size()},
-                                {cutlass_results, result_m},
-                                {cutlass_results, result_m},
-                                {1, 0});
-
-    auto start = get_clock_time();
-    status =  gemm_operator(args);
-    auto stop = get_clock_time();
-    if (status != cutlass::Status::kSuccess) {
-        free_data<float>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
-        std::cerr << "FAILED TO RUN GEMM\n";
-        exit(EXIT_FAILURE);
-    }
-
-    std::cout << get_duration_seconds(start, stop) << "\n";
-
-    cudaError_t cuda_result = cudaMemcpy( results, cutlass_results, result_m * result_n * sizeof(float), cudaMemcpyDeviceToHost);
-    if ( cuda_result != cudaSuccess )
-    {
-        std::cerr << "Failed to copy result post gemm: \n" << cudaGetErrorString(cuda_result) << std::endl;
-        exit(EXIT_FAILURE);
-    }
-
-    //MatrixHelper::print_matrix<float>(Orientation::ROW_MAJOR, result_m, result_n, results);
-    //MatrixHelper::print_matrix<float>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
-
-    free_data<float>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
-}
-
-// Double specialization for multiply
-template <>
-void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
-{
-    cutlass::Status status;
-
-    double* a; 
-    double* b;
-    double* results;
-    double* cutlass_a;
-    double* cutlass_b;
-    double* cutlass_results;
-
-    int result_m = mat_a.m_size();
-    int result_n = mat_b.n_size();
-
-    init_data<double>(
-            status,                // Cublas Status
-            mat_a,                 // Matrix A
-            mat_b,                 // Matrix B
-            a,                     // Pointer to matrix A values
-            b,                     // Pointer to matrix B values
-            results,               // Pointer to multiplication results
-            cutlass_a,              // Device pointer to matrix A values 
-            cutlass_b,              // Device pointer to matrix B values
-            cutlass_results);       // Device pointer to multiplication results
-#ifdef DEBUG
-    std::cout << "A: M" << mat_a.m_size() << "\n";
-    std::cout << "A: N" << mat_a.n_size() << "\n";
-    std::cout << "B: M" << mat_b.m_size() << "\n";
-    std::cout << "B: N" << mat_b.n_size() << "\n";
-#endif
-    DoubleGemm gemm_operator; 
-    
-    DoubleGemm::Arguments args({ mat_a.m_size(), mat_b.n_size(), mat_a.n_size() },
-                                {cutlass_a, mat_a.m_size()},
-                                {cutlass_b, mat_b.m_size()},
-                                {cutlass_results, result_m},
-                                {cutlass_results, result_m},
-                                {1, 0});
-
-    auto start = get_clock_time();
-    status =  gemm_operator(args);
-    auto stop = get_clock_time();
-
-    if (status != cutlass::Status::kSuccess) {
-        free_data<double>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
-        std::cerr << "FAILED TO RUN GEMM\n";
-        exit(EXIT_FAILURE);
-    }
-    std::cout << get_duration_seconds(start, stop) << "\n";
-
-
-
-    cudaError_t cuda_result = cudaMemcpy( results, cutlass_results, result_m * result_n * sizeof(double), cudaMemcpyDeviceToHost);
-    if ( cuda_result != cudaSuccess )
-    {
-        std::cerr << "Failed to copy result post gemm: \n" << cudaGetErrorString(cuda_result) << std::endl;
-        exit(EXIT_FAILURE);
-    }
-
-    //MatrixHelper::print_matrix<double>(Orientation::ROW_MAJOR, result_m, result_n, results);
-    //MatrixHelper::print_matrix<double>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
-
-    free_data<double>(
-            a,
-            b,
-            results,
-            cutlass_a,
-            cutlass_b,
-            cutlass_results);   
 }
 
 template <class T>

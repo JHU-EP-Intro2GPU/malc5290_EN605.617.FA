@@ -7,7 +7,8 @@ void multiply_matrices( const std::string& matrix_a_in, const std::string& matri
 {
     auto mat_a = generate_matrix<T>( matrix_a_in );
     auto mat_b = generate_matrix<T>( matrix_b_in );
-
+    
+    std::cout << "naive " << mat_a.m_size() << " " << mat_a.n_size() << " " << mat_b.n_size() << " ";
     NaiveDriver<T> driver(mat_a, mat_b);
     driver.multiply_matrices();
 }
