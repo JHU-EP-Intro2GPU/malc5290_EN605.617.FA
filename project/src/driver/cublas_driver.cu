@@ -120,6 +120,7 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
             0,                    // No scaling of result matrix
             cublas_results,       // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
+    cudaDeviceSynchronize();
     stop = get_clock_time();
     std::cout << get_duration_seconds(start, stop) << " ";
       
@@ -137,7 +138,7 @@ void multiply<float>( const Matrix<float> mat_a, const Matrix<float> mat_b )
     }
     stop = get_clock_time();
     std::cout << get_duration_seconds(start, stop) << std::endl;
-    
+ //   MatrixHelper::print_matrix<float>( Orientation::COLUMN_MAJOR, result_m, result_n, results);    
     free_data<float>(
             a,
             b,

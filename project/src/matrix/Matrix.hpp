@@ -27,7 +27,8 @@ public:
     void setOrientation( const Orientation& orientation){_orientation = orientation;}
     
     std::vector<T> matrix() const{ return _matrix_values; }
-    void setMatrix(const std::vector<T> matrix){_matrix_values = matrix;}
+    std::vector<T>& matrix_ref() { return _matrix_values; }
+    void setMatrix(const std::vector<T>& matrix){_matrix_values = matrix;}
 
 private:
     int             _m;

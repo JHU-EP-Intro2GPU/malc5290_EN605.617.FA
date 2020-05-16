@@ -73,28 +73,29 @@ namespace MatrixHelper
         {
             std::cout << "NOTHING TO DO\n";
         }
-
+        int M = matrix.m_size();
+        int N = matrix.n_size();
         std::vector<T> updatedMatrix;
         updatedMatrix.reserve(matrix.size());
         if ( matrix.orientation() == Orientation::ROW_MAJOR )
         {
             matrix.setOrientation(Orientation::COLUMN_MAJOR);
-            for ( int n = 0; n < matrix.n_size(); n++ )
+            for ( int n = 0; n < N; n++ )
             {
-                for ( int m = 0; m < matrix.m_size(); m++ )
+                for ( int m = 0; m < M; m++ )
                 {
-                    updatedMatrix.push_back(matrix.matrix()[matrix.n_size() * m + n]); 
+                    updatedMatrix.emplace_back(matrix.matrix_ref()[N * m + n]); 
                 }
             }
         }
         else
         {
             matrix.setOrientation(Orientation::ROW_MAJOR);
-            for ( int m = 0; m < matrix.m_size(); m++ )
+            for ( int m = 0; m < M; m++ )
             {
-                for ( int n = 0; n < matrix.n_size(); n++ )
+                for ( int n = 0; n < N; n++ )
                 {
-                    updatedMatrix.push_back(matrix.matrix()[matrix.m_size() * n + m]); 
+                    updatedMatrix.push_back(matrix.matrix_ref()[M * n + m]); 
                 }
             }
         }

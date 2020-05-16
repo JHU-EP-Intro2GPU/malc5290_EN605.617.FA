@@ -180,6 +180,7 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
 #endif
     start = get_clock_time();
     status = multiply(a, b, results, cutlass_a, cutlass_b, cutlass_results, result_m, result_n, mat_a.n_size());
+    cudaDeviceSynchronize();
     stop = get_clock_time();
     if (status != cutlass::Status::kSuccess) {
         free_data<T>(
@@ -205,7 +206,7 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
     }
 
     //MatrixHelper::print_matrix<short>(Orientation::ROW_MAJOR, result_m, result_n, results);
-    MatrixHelper::print_matrix<T>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
+    //MatrixHelper::print_matrix<T>(Orientation::COLUMN_MAJOR, result_m, result_n, results);
 
     free_data<T>(
             a,

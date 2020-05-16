@@ -184,25 +184,69 @@ void _naive_multiply( const MultConstants* const d_multinfo,  const T * d_a, con
 template <>
 void _naive_multiply<int>( const MultConstants* const d_multinfo,  const int * d_a, const int* d_b, int* d_results, const dim3& block, const dim3& grid )
 {
-    i_naive_multiply<<< grid, block >>>( d_multinfo, d_a, d_b, d_results ); 
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
+    i_naive_multiply<<< grid, block >>>( d_multinfo, d_a, d_b, d_results );
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float time_ms = 0;
+    cudaEventElapsedTime(&time_ms, start, stop);
+    std::cout << (time_ms / 1000) << " ";
 }
 
 template <>
 void _naive_multiply<short>( const MultConstants* const d_multinfo,  const short* d_a, const short* d_b, short* d_results, const dim3& block, const dim3& grid )
 {
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
     s_naive_multiply<<< grid, block >>>( d_multinfo, d_a, d_b, d_results ); 
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float time_ms = 0;
+    cudaEventElapsedTime(&time_ms, start, stop);
+    std::cout << (time_ms / 1000) << " ";
 }
 
 template <>
 void _naive_multiply<double>( const MultConstants* const d_multinfo,  const double* d_a, const double* d_b, double* d_results, const dim3& block, const dim3& grid )
 {
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
     d_naive_multiply<<< grid, block >>>( d_multinfo, d_a, d_b, d_results ); 
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float time_ms = 0;
+    cudaEventElapsedTime(&time_ms, start, stop);
+    std::cout << (time_ms / 1000) << " ";
 }
 
-template <>
+    template <>
 void _naive_multiply<float>( const MultConstants* const d_multinfo,  const float * d_a, const float* d_b, float* d_results, const dim3& block, const dim3& grid )
 {
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
     f_naive_multiply<<< grid, block >>>( d_multinfo, d_a, d_b, d_results ); 
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float time_ms = 0;
+    cudaEventElapsedTime(&time_ms, start, stop);
+    std::cout << (time_ms / 1000) << " ";
 }
 
 template <class T>
@@ -249,10 +293,7 @@ void multiply( const Matrix<T> mat_a, const Matrix<T> mat_b )
         ( result_m + block.y - 1 ) / block.y + 1
     );
    
-    start = get_clock_time();
     _naive_multiply<T>( d_multinfo, d_a, d_b, d_results, block, grid );
-    stop = get_clock_time();
-    std::cout << get_duration_seconds(start, stop) << " ";
     
     start = get_clock_time();
     cudaError_t cuda_result = cudaMemcpy( results, d_results, result_m * result_n * sizeof(T), cudaMemcpyDeviceToHost);
