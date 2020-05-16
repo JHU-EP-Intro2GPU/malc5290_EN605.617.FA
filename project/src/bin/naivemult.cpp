@@ -8,7 +8,7 @@ void multiply_matrices( const std::string& matrix_a_in, const std::string& matri
     auto mat_a = generate_matrix<T>( matrix_a_in );
     auto mat_b = generate_matrix<T>( matrix_b_in );
     
-    std::cout << "naive " << mat_a.m_size() << " " << mat_a.n_size() << " " << mat_b.n_size() << " ";
+    std::cout << mat_a.m_size() << " " << mat_a.n_size() << " " << mat_b.n_size() << " ";
     NaiveDriver<T> driver(mat_a, mat_b);
     driver.multiply_matrices();
 }
@@ -26,18 +26,23 @@ int main(int argc, char* argv[])
         exit(1);
     }
 
+    std::cout << "naive ";
     switch (data_type)
     {
         case InputDataType::INT:
+            std::cout << "int ";
             multiply_matrices<int>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::SHORT:
+            std::cout << "short ";
             multiply_matrices<short>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::DOUBLE:
+            std::cout << "double ";
             multiply_matrices<double>( matrix_a_in, matrix_b_in, write_results );
             break;
         case InputDataType::FLOAT:
+            std::cout << "float ";
             multiply_matrices<float>( matrix_a_in, matrix_b_in, write_results );
             break;
     }

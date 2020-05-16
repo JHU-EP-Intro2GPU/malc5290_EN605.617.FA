@@ -178,7 +178,6 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             cublas_results);       // Device pointer to multiplication results
     auto stop = get_clock_time();
     std::cout << get_duration_seconds(start, stop) << " ";
-
 #ifdef DEBUG
     std::cout << "A: M" << mat_a.m_size() << "\n";
     std::cout << "A: N" << mat_a.n_size() << "\n";
@@ -198,17 +197,18 @@ void multiply<double>( const Matrix<double> mat_a, const Matrix<double> mat_b )
             cublas_b,             // Device pointer to matrix B
             mat_b.m_size(),       // Row size of matrix B ( Leading dimension )
             0,                    // No scaling of result matrix
-            nullptr,              // Device pointer to multiplication results
+            cublas_results,       // Device pointer to multiplication results
             result_m);            // Row size of matrix C ( Leading dimension )
     stop = get_clock_time();
 
-    std::cout << get_duration_seconds(start, stop) << " ";
     
     status = cublasGetError();
     if (status != CUBLAS_STATUS_SUCCESS)
     {
+        std::cout << "DGEMM FAILED: " << status << "\n";
         exit(EXIT_FAILURE);
     }
+    std::cout << get_duration_seconds(start, stop) << " ";
     
     start = get_clock_time();
     cublasGetMatrix(result_m, result_n, sizeof(double), cublas_results, result_m, results, result_m);
