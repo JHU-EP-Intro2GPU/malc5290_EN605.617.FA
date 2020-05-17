@@ -1,4 +1,6 @@
 build
 util/matrix-gen/
+util/scripts/sparse-results/
+util/scripts/dense-results/
 *.swp
 *.csv

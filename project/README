@@ -1,0 +1,15 @@
+To Run this program you will need:
+- python3
+- cmake
+- cutlass library
+*Note: In src/CmakeList.txt if you want to ignore the cutlass dependency remove references to cutlass ( I am not great with cmake and couldn't get that issue to handle nicely )*
+
+To compile:
+create a build dir in the project root dir
+cd into the direcory and run cmake ..
+run make
+
+Running:
+The binaries are located in <project_root>/build/src
+passing nothing into the binaries will show available arguments
+the run script is located in <project_root>/util/scripts which was used to generate all data.

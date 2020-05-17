@@ -30,7 +30,7 @@ def main(args: argparse.Namespace):
                     out += str(ival)
                     # print('IVAL: {}'.format(ival))
                 else:
-                    val = dist[index] if dist[index] is 0. else random.random()
+                    val = dist[index] if dist[index] is 0 else random.random()
                     out += '{:1.4f}'.format(val)
                     # print('VAL: {}'.format(val))
                 index += 1
